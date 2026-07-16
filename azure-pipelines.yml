@@ -1,0 +1,8 @@
+trigger: none
+
+pool:
+  name: Aarush_agent_pool
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
