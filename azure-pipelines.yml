@@ -4,14 +4,53 @@ pool:
   name: Aarush_agent_pool
 
 stages:
-  - stage: 
-    displayName: 
+  - stage: Precommit
+    displayName: Terraform_format_and_validate
     jobs:
-      - job: 
-        displayName: 
+      - job: A
+        displayName: Terraform_Formatting_&_validation
         steps:
         - task: TerraformInstaller@1
           inputs:
             terraformVersion: 'latest'
 
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'init'
+            backendServiceArm: 'myservconn'
+            backendAzureRmOverrideSubscriptionID: 'b197523b-6a83-4a07-8922-3be74b9d39be'
+            backendAzureRmResourceGroupName: 'TestRG'
+            backendAzureRmStorageAccountName: 'testbackendsa'
+            backendAzureRmContainerName: 'testsc'
+            backendAzureRmKey: 'terraform20260717.tfstate'
+
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'custom'
+            outputTo: 'console'
+            customCommand: 'fmt'
+            environmentServiceNameAzureRM: 'myservconn'
+            environmentAzureRmOverrideSubscriptionID: 'b197523b-6a83-4a07-8922-3be74b9d39be'
+
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'validate'
+
+  - stage: Quality_check
+    displayName: tfsec_tflint
+    jobs:
+      - job: A
+        displayName: Code_Quality_Check
+        steps:
         
+
+  - stage: Infra_Planing
+  - stage: Revalidation
+  - stage: Artifacts_Store
+  - stage: cost_estimation_and_optimization
+  - stage: Deploy_to_Dev
+  - stage: Post_Deployment
+  - stage: Drift_Detection
