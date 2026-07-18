@@ -62,24 +62,24 @@ stages:
       - job: A
         displayName: CodequalitySQ
         steps:
-        - task: Bash@3
-          inputs:
-            targetType: 'inline'
-            script: |
-              echo "Build.SourceBranch=$(Build.SourceBranch)"
-              echo "Build.SourceBranchName=$(Build.SourceBranchName)"
+        # - task: Bash@3
+        #   inputs:
+        #     targetType: 'inline'
+        #     script: |
+        #       echo "Build.SourceBranch=$(Build.SourceBranch)"
+        #       echo "Build.SourceBranchName=$(Build.SourceBranchName)"
         
-        - task: SonarQubePrepare@8
-          inputs:
-            SonarQube: 'mysonarservconn'
-            scannerMode: 'cli'
-            cliScannerVersion: '7.2.0.5079'
-            configMode: 'manual'
-            cliProjectKey: 'terraform-infra'
-            cliProjectName: 'Terraform Infrastructure'
-            cliSources: '.'
-            extraProperties: |
-              sonar.scm.disabled=true
+        # - task: SonarQubePrepare@8
+        #   inputs:
+        #     SonarQube: 'mysonarservconn'
+        #     scannerMode: 'cli'
+        #     cliScannerVersion: '7.2.0.5079'
+        #     configMode: 'manual'
+        #     cliProjectKey: 'terraform-infra'
+        #     cliProjectName: 'Terraform Infrastructure'
+        #     cliSources: '.'
+        #     extraProperties: |
+        #       sonar.scm.disabled=true
 
         - task: Bash@3
           displayName: Sonar Scan
