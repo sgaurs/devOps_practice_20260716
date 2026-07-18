@@ -56,6 +56,13 @@ stages:
       - job: A
         displayName: CodequalitySQ
         steps:
+        - task: Bash@3
+          inputs:
+            targetType: 'inline'
+            script: |
+              echo "Build.SourceBranch=$(Build.SourceBranch)"
+              echo "Build.SourceBranchName=$(Build.SourceBranchName)"
+        
         - task: SonarQubePrepare@8
           inputs:
             SonarQube: 'mysonarservconn'
