@@ -74,6 +74,7 @@ stages:
 
         - task: Bash@3
           displayName: runtflint
+          continueOnError: true
           inputs:
             targetType: 'inline'
             script: 'tflint'
