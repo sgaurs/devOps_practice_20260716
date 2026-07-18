@@ -60,24 +60,14 @@ stages:
 
         - task: Bash@3
           displayName: Verfytflint
+          continueOnError: true
           inputs:
             targetType: 'inline'
             script: |
               which tflint
               tflint --version
-
-        - task: Bash@3
-          displayName: Initializelint
-          inputs:
-            targetType: 'inline'
-            script: 'tflint --init'
-
-        - task: Bash@3
-          displayName: runtflint
-          continueOnError: true
-          inputs:
-            targetType: 'inline'
-            script: 'tflint'
+              tflint --init
+              tflint
 
   - stage: Sonarqube
     displayName: Sonarqubecodequality
