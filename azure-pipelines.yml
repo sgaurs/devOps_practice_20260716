@@ -83,7 +83,7 @@ stages:
           displayName: Sonar Scan
           inputs:
             targetType: 'inline'
-            script: 'sonar-scanner -Dsonar.host.url="$SONAR_HOST_URL" -Dsonar.token="$SONAR_TOKEN"" -Dsonar.projectKey=terraform-infra -Dsonar.projectName="Terraform Infrastructure" -Dsonar.sources=.'
+            script: 'sonar-scanner -Dsonar.host.url="$(SONAR_HOST_URL)" -Dsonar.token="$(SONAR_TOKEN)" -Dsonar.projectKey="terraform-infra" -Dsonar.projectName="Terraform Infrastructure" -Dsonar.sources=.'
 
   # - stage: Infra_Planing
   # - stage: Revalidation
