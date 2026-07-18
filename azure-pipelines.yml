@@ -109,12 +109,14 @@ stages:
     jobs:
       - job: A
         displayName: ManualReview
+        pool: server
         steps:
         - task: ManualValidation@1
           inputs:
             notifyUsers: 'sumitvats08@gmail.com'
             approvers: 'sumitvats08@gmail.com'
             onTimeout: 'resume'
+
 
 
   # - stage: Infra_Planing
