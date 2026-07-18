@@ -72,6 +72,8 @@ stages:
             cliProjectKey: 'terraform-infra'
             cliProjectName: 'Terraform Infrastructure'
             cliSources: '.'
+            extraProperties: |
+              sonar.scm.disabled=true
 
         - task: SonarQubeAnalyze@8
           inputs:
