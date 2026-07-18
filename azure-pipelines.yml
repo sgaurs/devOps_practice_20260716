@@ -58,10 +58,24 @@ stages:
             dir: '.'
 
         - task: PowerShell@2
-          displayName: linting
+          displayName: Verfytflint
           inputs:
             targetType: 'inline'
-            script: 'tflint .'
+            script: |
+              which tflint
+              tflint --version
+
+        - task: Bash@3
+          displayName: Initializelint
+          inputs:
+            targetType: 'inline'
+            script: 'tflint --init'
+
+        - task: Bash@3
+          displayName: runtflint
+          inputs:
+            targetType: 'inline'
+            script: 'tflint'
 
   - stage: Sonarqube
     displayName: Sonarqubecodequality
