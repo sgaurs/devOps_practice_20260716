@@ -51,13 +51,14 @@ stages:
       - job: A
         displayName: Code_Quality_Check
         steps:
+        - checkout: self
         - task: tfsec@1
           displayName: secret_scanning
           inputs:
             version: 'v1.26.0'
             dir: '.'
 
-        - task: PowerShell@2
+        - task: Bash@3
           displayName: Verfytflint
           inputs:
             targetType: 'inline'
