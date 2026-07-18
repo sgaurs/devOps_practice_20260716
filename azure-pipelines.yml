@@ -54,7 +54,7 @@ stages:
     displayName: Sonarqube_code-quality
     jobs:
       - job: A
-        displayName: Code-quality_SQ
+        displayName: CodequalitySQ
         steps:
         - task: SonarQubePrepare@8
           inputs:
