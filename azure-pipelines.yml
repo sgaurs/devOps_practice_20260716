@@ -65,6 +65,14 @@ stages:
             cliProjectKey: 'terraform-infra'
             cliProjectName: 'Terraform Infrastructure'
             cliSources: '.'
+
+        - task: SonarQubeAnalyze@8
+          inputs:
+            jdkversion: 'JAVA_HOME_17_X64'
+
+        - task: SonarQubePublish@8
+          inputs:
+            pollingTimeoutSec: '300'
         
 
   # - stage: Infra_Planing
