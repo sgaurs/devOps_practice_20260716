@@ -52,9 +52,16 @@ stages:
         displayName: Code_Quality_Check
         steps:
         - task: tfsec@1
+          displayName: secret_scanning
           inputs:
             version: 'v1.26.0'
             dir: '.'
+
+        - task: PowerShell@2
+          displayName: linting
+          inputs:
+            targetType: 'inline'
+            script: 'tflint .'
 
   - stage: Sonarqube
     displayName: Sonarqubecodequality
