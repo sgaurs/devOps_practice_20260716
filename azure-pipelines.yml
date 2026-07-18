@@ -50,8 +50,8 @@ stages:
             version: 'v1.26.0'
             dir: '.'
 
-  - stage: Sonar-qube
-    displayName: Sonarqube_code-quality
+  - stage: Sonarqube
+    displayName: Sonarqubecodequality
     jobs:
       - job: A
         displayName: CodequalitySQ
