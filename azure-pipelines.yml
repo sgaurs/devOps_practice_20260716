@@ -1,5 +1,9 @@
 trigger: none
 
+variables:
+- name: system.debug
+  value: true
+
 pool:
   name: Aarush_agent_pool
 
